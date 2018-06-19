@@ -1,16 +1,27 @@
 package com.project.tetolicio.model;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Baby {
 	
-	private String name;
-	private Integer age;
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
-	public Integer getAge() {
-		return age;
+	private String name;
+	private Date bith;
+	
+	
+	public Date getBith() {
+		return bith;
 	}
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setAge(Date bith) {
+		this.bith = bith;
 	}
 	public Integer getId() {
 		return id;
