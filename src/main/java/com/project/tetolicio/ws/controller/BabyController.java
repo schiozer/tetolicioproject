@@ -38,7 +38,7 @@ public class BabyController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/baby/")
+	@RequestMapping(method=RequestMethod.GET, value="/baby")
 	public ResponseEntity<List<Baby>> getAll() {
 			
 		return new ResponseEntity<List<Baby>>(babyService.getAll(), HttpStatus.OK);
