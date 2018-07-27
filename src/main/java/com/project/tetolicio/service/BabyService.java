@@ -45,7 +45,8 @@ public class BabyService {
 	
 	public Optional<Baby> getBabyByName(String name) {
 		
-		Baby b = new Baby(name);
+		Baby b = new Baby();
+		b.setName(name);
 		Example<Baby> example = Example.of(b);
 		Optional<Baby> ret = babyRepo.findOne(example);
 

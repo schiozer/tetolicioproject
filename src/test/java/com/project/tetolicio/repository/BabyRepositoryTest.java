@@ -43,7 +43,7 @@ public class BabyRepositoryTest {
 			b.setName(Matheus);
 
 			Date dt = java.text.DateFormat.getDateInstance(DateFormat.SHORT,Locale.US).parse("01/08/2018");
-			b.setBith(dt);
+			b.setBirth(dt);
 		
 			Baby ret = entityManager.persist(b);
 			

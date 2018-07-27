@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<script src="revisaojs.js">
+		</script>
+
+		<script>
+			var pessoa = { 
+				nome: "Jao",
+				idade: 19,
+				mensagem: function(){
+					alert(" A pessoa chama " + this.nome + " e tem " + this.idade + " anos.");
+					// isso é uma função anônima.
+
+				}
+			}
+
+			pessoa.mensagem();
+
+			function Pessoa(nome, idade){
+				this.nome = nome;
+				this.idade = idade;
+			}
+
+			var p = new Pessoa("Jão", 20);
+			console.log("Nome " + p.nome + " idade: " + p.idade);
+
+		</script>
+	</head>
+	<body>
+		<div id="display">
+			XYZ
+		</div>
+		<div>
+			<span> " A pessoa chama " + pessoa.nome + " e tem " + pessoa.idade anos
+		</div>
+		<div id="campos">
+			Nome: <input type="text" id="txtNome"/>
+			<input type="button" value="+" onclick="novoContato()"/>
+			<input type="button" value="Ok" onclick="imprimeDados()"/>
+
+			<form name="frmContatos">
+				<div id="listaContatos">
+
+
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

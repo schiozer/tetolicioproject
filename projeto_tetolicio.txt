@@ -1,0 +1,114 @@
+Projeto Tetolício
+=================
+
+https://www.youtube.com/watch?v=ScSfe7VGS8c&index=5&list=PLKvsMn7xWutbSELeX5j8CXF2Lxd2cj19J&t=0s
+
+Abre STS e cria um projeto Spring Start Project, cadastra o projeto e insere adiciona Web
+
+application.properties é possível configurar porta quando deu ruim, óbvio que isso só deve ajudar no desenc por que depois vai por conta do servidor de aplicaçao.
+
+[]
+
+Utilizando Spring Data (que implmenta JPA). Ainda sim é preciso do Hibernate. Para comunicação com banco Postgres
+
+Os services que irão ser utilizados para ter as regras de negócio devem ter a notação @Service para poderem ser controlados e injetados pelo Spring quando colocarmos @Autowired.
+
+
+
+
+Vai no projeto e clica com botão direito, vai Sprint Tools show Request Mappings, vai mostrar todos os verbos http para quais métodos está mapeado.
+
+Para incluir banco de dados, só precisamos criar uma interface extendo a JPARepository.
+
+Para adicionar starters do SpringBoot depois da criação do projeto, clica no Pom.XML, botão direito, spring, edit starters.
+
+Criar conexão com banco no application.properties que está em sec/main/resources usando a perspectiva do spring.
+
+As colunas estavam sendo criadas com padrão SNAKE_CASE. Por padrão, quando no spring data temos o CamelCase, é convertido tudo para SNAKE_CASE.
+
+Papi então mudou o seguinte o application.properties:
+
+spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+Para acelerar o STS:
+====================
+
+https://zeroturnaround.com/free/optimizer-for-eclipse/
+
+incluir no STS.ini
+
+-Xms512m
+-Xmx3072m
+-XX:MaxPermSize=2048m
+-XstartOnFirstThread
+
+TESTES
+=================================
+=================================
+=================================
+Melhor Blog: http://www.baeldung.com/spring-boot-testing
+
+Tive problemas para rodar testes por conta da falta de uma LIB JABX
+
+Segue detalhes: http://blog.caelum.com.br/erros-com-jaxb-no-java-9/
+
+mas a correção foi incluir o abaixo no POM:
+
+		<dependency>
+		  <groupId>javax.xml.bind</groupId>
+		  <artifactId>jaxb-api</artifactId>
+		  <version>2.2.11</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.sun.xml.bind</groupId>
+		  <artifactId>jaxb-core</artifactId>
+		  <version>2.2.11</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.sun.xml.bind</groupId>
+		  <artifactId>jaxb-impl</artifactId>
+		  <version>2.2.11</version>
+		</dependency>
+
+
+Outro erro de Mockito estava impedindo de executar, tive que incluir o seguinte no Maven:
+
+		<dependency>
+		  <groupId>net.bytebuddy</groupId>
+		  <artifactId>byte-buddy</artifactId>
+		  <version>1.8.12</version>
+		  <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.objenesis</groupId>
+		  <artifactId>objenesis</artifactId>
+		  <version>2.6</version>
+		  <scope>runtime</scope>
+		</dependency>
+
+Já para testar a service layer foi preciso usar mesmo o tal do Mockito, como mostrado nesse blog
+
+https://krishnasblog.com/2013/02/21/junit-testing-of-spring-mvc-application-testing-service-layer/
+
+CUIDADO !!!
+Inlcuir construtor que aceita uma string no model confunde o spring na hora de transformar o JSON em objeto
+
+cuidado ao inserir o stater de security sem usá-los
+
+
+
+
+Para trazer o Angular para dentro do projeto, vai ao site do AnjularJS, clica em download e copia o link e depois colocar em Script da página html.
+
+é possível testar se rolou carregar o AngularJS	só ir no developer tools do chrome
+
+dentro do static, criar js.
+dentro de js, colocar o app.js
+
+Com a presença do Thymeleaf no projeto, incluído manualmente no pom.xml ainda usando usando starter, podemos eliminar cache de páginas, mesmo problema que tinha na Ectp:
+utilizando spring.thymeleaf.cache no application.properties
+
+
+https://www.youtube.com/watch?v=Bo8xEaxiuUM&index=9&list=PLKvsMn7xWutbSELeX5j8CXF2Lxd2cj19J
+

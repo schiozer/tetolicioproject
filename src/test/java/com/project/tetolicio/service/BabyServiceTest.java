@@ -68,9 +68,10 @@ public class BabyServiceTest {
 	public void testRemove() {
 
 		try {
-			Baby b = new Baby(Matheus);
+			Baby b = new Baby();
 			Date dt = java.text.DateFormat.getDateInstance(DateFormat.SHORT,Locale.US).parse("01/08/2018");
-			b.setBith(dt);
+			b.setName(Matheus);
+			b.setBirth(dt);
 			
 			Baby ret = babyService.save(b);
 	
